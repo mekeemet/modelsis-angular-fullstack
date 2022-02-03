@@ -1,0 +1,29 @@
+<div class="card" style="background-color: #DCDCDC;">
+  <div class="card-header card-header-light" style="background-color: #e91e63; color: white">
+    <h4 class="card-title" style="color: white">Modifier Product</h4>
+  </div>
+
+  <form [formGroup]="productFormGroup" (ngSubmit)="onSubmit()" >
+    <br><br>
+    <div class="container" >
+
+      <mat-form-field appearance="fill" class="col-12">
+        <mat-label>Nom Product</mat-label>
+        <input matInput style="color: black;" placeholder="Nom Produit" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="col-12">
+        <mat-label>Type Produit</mat-label>
+        <mat-select formControlName="typeProductid" style="color:black">
+          <mat-option *ngFor="let typeP of typeProducts" style="color:black" [value]="typeP.id">
+            {{ typeP.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div >
+        <button type="button" (click)="closeModal()" align="right"  style="margin-bottom: 100px;margin-right: 15px;" class="btn btn-danger" >Annuler</button>
+        <button  type="submit" align="left"  style="margin-bottom: 100px;margin-left: 190px;" class="btn btn-success" [disabled]="productFormGroup.invalid">Valider</button>
+      </div>
+    </div>
+  </form>
+</div>
